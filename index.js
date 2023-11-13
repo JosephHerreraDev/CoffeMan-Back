@@ -8,9 +8,7 @@ app.use(
     extended: true,
   })
 );
-app.get("/", (req, res) => {
-  res.json({ message: "ok" });
-});
+
 app.use("/products", productsRouter);
 
 app.use((err, req, res, next) => {
