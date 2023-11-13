@@ -12,4 +12,31 @@ router.get("/", async function (req, res, next) {
   }
 });
 
+router.post("/", async function (req, res, next) {
+  try {
+    res.json(await products.create(req.body));
+  } catch (err) {
+    console.error(`Error while creating programming language`, err.message);
+    next(err);
+  }
+});
+
+router.put('/:id', async function(req, res, next) {
+  try {
+    res.json(await products.update(req.params.id, req.body));
+  } catch (err) {
+    console.error(`Error while updating products`, err.message);
+    next(err);
+  }
+});
+
+router.delete('/:id', async function(req, res, next) {
+  try {
+    res.json(await products.remove(req.params.id));
+  } catch (err) {
+    console.error(`Error while deleting product`, err.message);
+    next(err);
+  }
+});
+
 module.exports = router;
