@@ -3,6 +3,7 @@ const app = express();
 const port = 3000;
 const productsRouter = require("./routes/products");
 const ordersRouter = require("./routes/orders");
+const paymentsRouter = require("./routes/payments");
 app.use(express.json());
 app.use(
   express.urlencoded({
@@ -12,6 +13,7 @@ app.use(
 
 app.use("/products", productsRouter);
 app.use("/orders", ordersRouter);
+app.use("/payments", paymentsRouter);
 
 app.use((err, req, res, next) => {
   const statusCode = err.statusCode || 500;
